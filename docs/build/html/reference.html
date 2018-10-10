@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fileslice Reference &mdash; fileslice 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="fileslice 0.0.1 documentation" href="index.html"/>
+        <link rel="prev" title="Quick Guide" href="quick-guide.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> fileslice
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick-guide.html">Quick Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">fileslice Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fileslice</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>fileslice Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-fileslice">
+<span id="fileslice-reference"></span><h1>fileslice Reference<a class="headerlink" href="#module-fileslice" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Date:</th><td class="field-body"><p class="first">2018-10-10</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Version:</th><td class="field-body"><p class="first">0.0.1</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body"><ul class="first last simple">
+<li>Mohammad Alghafli &lt;<a class="reference external" href="mailto:thebsom&#37;&#52;&#48;gmail&#46;com">thebsom<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>File slice is a part of a file. This library allows you to open a binary file
+and see only part of it. You specify the start and end of the file part you want
+to see. Read and write operations will always start at the specified start
+position and will never exceed the specified end position. Here is an example of
+how to use it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fileslice</span> <span class="k">import</span> <span class="n">Slicer</span>
+
+<span class="c1">#let&#39;s open a file for reading</span>
+<span class="n">r</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;example.png&#39;</span><span class="p">,</span> <span class="s1">&#39;br&#39;</span><span class="p">)</span>
+
+<span class="c1">#create a slicer for the file</span>
+<span class="n">slicer</span> <span class="o">=</span> <span class="n">Slicer</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="c1">#the slicer behaves like a function. call it to create as many fileslices</span>
+<span class="c1">#as you want</span>
+<span class="n">start</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c1">#the beginning of our partial file is at 5</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">95</span>   <span class="c1">#the size of the part is 95 bytes so our end is 99</span>
+<span class="n">fileslice</span> <span class="o">=</span> <span class="n">slicer</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>     <span class="c1">#this is a file like object</span>
+
+<span class="c1">#now we have a fileslice file from byte 5 to byte 99.</span>
+<span class="c1">#the initial partial file seek position is 0.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fileslice</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>  <span class="c1">#will print from byte 5 to 99.</span>
+
+<span class="c1">#now our seek position is at the end of the fileslice file</span>
+<span class="c1">#that is byte 100 of the full file</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1">#if we seek to a position out of the fileslice file range (from 0 to 95)</span>
+    <span class="n">fileslice</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="c1">#an exception will be thrown</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error while seeking to 200&#39;</span><span class="p">)</span>
+
+<span class="c1">#we can seek from the end of the fileslice or from current fileslice</span>
+<span class="c1">#seek position</span>
+<span class="c1">#let&#39;s seek to fifth byte from the end of the file. that is byte 95</span>
+<span class="n">fileslice</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This library also works in writable files. Multiple threads can be used to read
+and write to different file slices from the same file. Just make sure you do not
+use the original opened file or the fileslices (and the original file object)
+will be confused.</p>
+<dl class="class">
+<dt id="fileslice.FileSlice">
+<em class="property">class </em><code class="descclassname">fileslice.</code><code class="descname">FileSlice</code><span class="sig-paren">(</span><em>f</em>, <em>start</em>, <em>size</em>, <em>lock</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <cite>Slicer</cite> class is a convinient way to create instances of this
+class.</p>
+</div>
+<p>A file slice. An instance of this class is a file-like object that only
+looks at a specific region in the original file object. Multiple slices can
+be created from the same file object and each slice will have its own seek
+position and you can read and write to each slice independantly. <cite>FileSlice</cite>
+instances generated from the same <cite>Slicer</cite> object are thread-safe.</p>
+<p>In addition to the class methods, the following methods call the methods
+with the same name from the original file object:</p>
+<blockquote>
+<div><ul class="simple">
+<li>readable.</li>
+<li>writable.</li>
+<li>seekable.</li>
+<li>isatty.</li>
+<li>fileno.</li>
+</ul>
+</div></blockquote>
+<dl class="method">
+<dt id="fileslice.FileSlice.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>file.close()</cite> but for the slice. All file access operations
+will raise ValueError after the file is closed. The original file object
+is not closed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="fileslice.FileSlice.end">
+<code class="descname">end</code><a class="headerlink" href="#fileslice.FileSlice.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>The end position of the slice. The slice will not read or write if the
+new position is ahead of this value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fileslice.FileSlice.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flushes the original file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fileslice.FileSlice.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>size=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>file.read()</cite> but for the slice. Does not read beyond
+<cite>self.end</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fileslice.FileSlice.seek">
+<code class="descname">seek</code><span class="sig-paren">(</span><em>offset</em>, <em>whence=0</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.seek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>file.seek()</cite> but for the slice. Returns a value between
+<cite>self.start</cite> and <cite>self.size</cite> inclusive.</p>
+<dl class="docutils">
+<dt>raises:</dt>
+<dd>ValueError if the new seek position is not between 0 and
+<cite>self.size</cite>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="fileslice.FileSlice.tell">
+<code class="descname">tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.tell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>file.tell()</cite> but for the slice. Returns a value between
+<cite>self.start</cite> and <cite>self.size</cite> inclusive.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="fileslice.FileSlice.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>file.write()</cite> but for the slice.</p>
+<dl class="docutils">
+<dt>raises:</dt>
+<dd>EOFError if the new seek position is &gt; <cite>self.size</cite>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="fileslice.FileSlice.writelines">
+<code class="descname">writelines</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.FileSlice.writelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>file.writelines()</cite> but for the slice.</p>
+<dl class="docutils">
+<dt>raises:</dt>
+<dd>EOFError if the new seek position is &gt; <cite>self.size</cite>.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="fileslice.Slicer">
+<em class="property">class </em><code class="descclassname">fileslice.</code><code class="descname">Slicer</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.Slicer" title="Permalink to this definition">¶</a></dt>
+<dd><p>File slicer. Use this class to slice a file into multiple file slices and
+use each slice as if it was an independant file.</p>
+<dl class="method">
+<dt id="fileslice.Slicer.slices">
+<code class="descname">slices</code><span class="sig-paren">(</span><em>size</em>, <em>n=3</em><span class="sig-paren">)</span><a class="headerlink" href="#fileslice.Slicer.slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create equal sized slices of the file. The last slice may be larger than
+the others.</p>
+<dl class="docutils">
+<dt>args:</dt>
+<dd><ul class="first last simple">
+<li>size (int): The full size to be sliced.</li>
+<li>n (int): The number of slices to return.</li>
+</ul>
+</dd>
+<dt>returns:</dt>
+<dd>A list of <cite>FileSlice</cite> objects of length (n).</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="quick-guide.html" class="btn btn-neutral" title="Quick Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Mohammad Alghafli.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
