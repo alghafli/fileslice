@@ -40,9 +40,9 @@ This is a typical usage example::
     #let's seek to fifth byte from the end of the fileslice. that is byte 95
     fileslice.seek(-5, 2)
 
----------------------
-Equally sized splices
----------------------
+--------------------
+Equally sized slices
+--------------------
 
 ::
 
